@@ -73,7 +73,7 @@
         </a>
       @endif
 
-      <a href="{{ route('perfil.change-password') }}" class="btn-hdr" title="Cambiar contraseña">
+      <a href="{{ route('perfil.show-change-password') }}" class="btn-hdr" title="Cambiar contraseña">
         <i class="fas fa-user"></i> Perfil
       </a>
 

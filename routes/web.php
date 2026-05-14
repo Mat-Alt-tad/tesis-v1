@@ -68,7 +68,7 @@ Route::middleware('auth')->prefix('notificaciones')->name('notificaciones.')->gr
 
 // Perfil (auth)
 Route::middleware('auth')->prefix('perfil')->name('perfil.')->group(function () {
-    Route::get('/change-password', [ProfileController::class, 'showChangePassword'])->name('change-password');
+    Route::get('/change-password', [ProfileController::class, 'showChangePassword'])->name('show-change-password');
     Route::patch('/change-password', [ProfileController::class, 'changePassword'])->name('change-password');
 });
 
