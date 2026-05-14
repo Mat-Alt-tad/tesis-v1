@@ -73,6 +73,10 @@
         </a>
       @endif
 
+      <a href="{{ route('perfil.change-password') }}" class="btn-hdr" title="Cambiar contraseña">
+        <i class="fas fa-user"></i> Perfil
+      </a>
+
       <form method="POST" action="{{ route('logout') }}" style="display:inline">
         @csrf
         <button type="submit" class="btn-hdr" title="Cerrar sesión" style="background:var(--rojo-light);color:white">

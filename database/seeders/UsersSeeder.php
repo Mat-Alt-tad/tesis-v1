@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
         $admin = User::create([
             'name'              => 'Admin Principal',
             'email'             => 'admin@etnobotanica.co',
-            'password'          => Hash::make('admin123'), // ⚠️ cambiar en producción
+            'password'          => Hash::make('admin2026UDEC'), // ⚠️ cambiar en producción
             'email_verified_at' => now(),
             'activo'            => true,
         ]);
@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
         $moderador = User::create([
             'name'              => 'Moderador Ejemplo',
             'email'             => 'moderador@etnobotanica.co',
-            'password'          => Hash::make('moderador123'),
+            'password'          => Hash::make('moderador2026udec'),
             'email_verified_at' => now(),
             'activo'            => true,
         ]);
@@ -40,7 +40,7 @@ class UsersSeeder extends Seeder
         $lector = User::create([
             'name'              => 'Lector Ejemplo',
             'email'             => 'lector@etnobotanica.co',
-            'password'          => Hash::make('lector123'),
+            'password'          => Hash::make('lectorbotanicafusa'),
             'email_verified_at' => now(),
             'activo'            => true,
         ]);

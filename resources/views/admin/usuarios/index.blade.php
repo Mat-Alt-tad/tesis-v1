@@ -80,6 +80,10 @@
                 @endif
               @endif
             @endif
+            <button type="button" class="abtn ab-edit"
+                    onclick="abrirModal('modal-password-{{ $usuario->id }}')">
+              Cambiar Contraseña
+            </button>
           </td>
         </tr>
       @empty
@@ -137,5 +141,39 @@
     </form>
   </div>
 </div>
+
+@foreach($usuarios as $usuario)
+{{-- Modal cambiar contraseña --}}
+<div id="modal-password-{{ $usuario->id }}" class="modal-ov">
+  <div class="modal">
+    <div class="modal-hdr">
+      <h3><i class="fas fa-key"></i> Cambiar Contraseña</h3>
+      <button class="modal-close" onclick="cerrarModal('modal-password-{{ $usuario->id }}')"><i class="fas fa-times"></i></button>
+    </div>
+    <form method="POST" action="{{ route('admin.usuarios.change-password', $usuario) }}">
+      @csrf @method('PATCH')
+      <div class="modal-body">
+        <p style="margin-bottom:16px;color:var(--texto-suave)">
+          Cambiando contraseña para: <strong>{{ $usuario->name }}</strong>
+        </p>
+        <div class="f-group">
+          <label>Nueva Contraseña *</label>
+          <input type="password" name="password" placeholder="••••••••" required>
+        </div>
+        <div class="f-group">
+          <label>Confirmar Contraseña *</label>
+          <input type="password" name="password_confirmation" placeholder="••••••••" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-cancel" onclick="cerrarModal('modal-password-{{ $usuario->id }}')">Cancelar</button>
+        <button type="submit" class="btn-submit">
+          <i class="fas fa-save"></i> Cambiar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+@endforeach
 
 @endsection

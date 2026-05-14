@@ -57,4 +57,17 @@ class UsuarioAdminController extends Controller
         $usuario->update(['activo' => true]);
         return back()->with('success', "Usuario \"{$usuario->name}\" reactivado.");
     }
+
+    public function changePassword(Request $request, User $usuario)
+    {
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $usuario->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return back()->with('success', "Contraseña de \"{$usuario->name}\" cambiada exitosamente.");
+    }
 }

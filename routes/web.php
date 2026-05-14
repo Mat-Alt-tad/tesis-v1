@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ModeracionController;
 use App\Http\Controllers\Admin\PlantaAdminController;
 use App\Http\Controllers\Admin\SubtemaAdminController;
 use App\Http\Controllers\Admin\UsuarioAdminController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /* ══════════════════════════════════════════════
@@ -65,6 +66,12 @@ Route::middleware('auth')->prefix('notificaciones')->name('notificaciones.')->gr
     Route::post('/{notificacion}/leida',   [NotificacionController::class, 'marcarUna'])->name('una');
 });
 
+// Perfil (auth)
+Route::middleware('auth')->prefix('perfil')->name('perfil.')->group(function () {
+    Route::get('/change-password', [ProfileController::class, 'showChangePassword'])->name('change-password');
+    Route::patch('/change-password', [ProfileController::class, 'changePassword'])->name('change-password');
+});
+
 /* ══════════════════════════════════════════════
    RUTAS ADMIN (autenticadas + rol admin/moderador)
 ══════════════════════════════════════════════ */
@@ -97,6 +104,7 @@ Route::middleware(['auth', 'role:admin|moderador'])->prefix('admin')->name('admi
     // Usuarios
     Route::resource('usuarios', UsuarioAdminController::class)->except(['show']);
     Route::patch('usuarios/{usuario}/activar', [UsuarioAdminController::class, 'activar'])->name('usuarios.activar');
+    Route::patch('usuarios/{usuario}/change-password', [UsuarioAdminController::class, 'changePassword'])->name('usuarios.change-password');
 
     // Configuración
     Route::get('config', fn() => view('admin.config'))->name('config');
