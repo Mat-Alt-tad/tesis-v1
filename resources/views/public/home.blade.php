@@ -6,7 +6,7 @@
 @section('content')
 
 <div class="hero">
-  <h1>Saberes botánicos de<br><em>Fusagasugá</em></h1>
+  <h1>Saberes botánicos de<br><em>Sumapaz</em></h1>
   <p>Catálogo colaborativo del conocimiento tradicional sobre plantas medicinales y su uso local.</p>
 </div>
 
